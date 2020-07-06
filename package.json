@@ -5,7 +5,7 @@
   "main": "app/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "postgraphile"
+    "start": "postgraphile --append-plugins @graphile-contrib/pg-simplify-inflector"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
   "comments": {
     "main": "THE ABOVE main app/index.js ^ JS FILE IS UNUSED - RUN npm start TO RUN THE APP INSTEAD.",
     "scripts": {
-      "start": "you can specify the username and password for the connection string in .postgraphilerc.js (to better separate configs) - SEE https://www.graphile.org/postgraphile/usage-cli/#rc-file-options"
+      "start": "MUST SPECIFY that you want the pg-simplify-inflector plugin: https://github.com/graphile/pg-simplify-inflector#usage. Also you can specify the username and password for the connection string in .postgraphilerc.js (to better separate configs) - SEE https://www.graphile.org/postgraphile/usage-cli/#rc-file-options"
     }
   }
 }
