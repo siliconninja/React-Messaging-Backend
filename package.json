@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "postgraphile"
-  
   },
   "repository": {
     "type": "git",
@@ -19,6 +18,7 @@
   },
   "homepage": "https://github.com/siliconninja/React-Messaging-Backend#readme",
   "dependencies": {
+    "@graphile-contrib/pg-simplify-inflector": "^6.0.0",
     "postgraphile": "^4.7.0"
   },
   "comments": {
