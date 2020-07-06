@@ -1,0 +1,22 @@
+{
+  "name": "react-messaging-backend",
+  "version": "1.0.0",
+  "description": "A React Native messaging backend with good old GraphQL APIs.",
+  "main": "app/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siliconninja/React-Messaging-Backend.git"
+  },
+  "author": "siliconninja",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/siliconninja/React-Messaging-Backend/issues"
+  },
+  "homepage": "https://github.com/siliconninja/React-Messaging-Backend#readme",
+  "dependencies": {
+    "postgraphile": "^4.7.0"
+  }
+}
