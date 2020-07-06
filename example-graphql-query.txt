@@ -54,8 +54,9 @@ mutation {
     }
   )
   # get the rest of the stuff and print it to the screen!
-  {
-    message {
+{
+  messages {
+    nodes {
       nodeId
       id
       email
