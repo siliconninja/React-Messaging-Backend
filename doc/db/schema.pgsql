@@ -26,3 +26,14 @@ CREATE ROLE messagesdb_user WITH
 	NOREPLICATION
 	CONNECTION LIMIT -1
 	PASSWORD 'messagesdb_user'; -- yes, this plaintext password is there. this won't ever be done in production.
+
+-- If using the PGAdmin4 GUI, run these in Tools > Query Tool (or similar) to grant permissions on the messages table.
+-- You can also right click on a table and use the Table permissions wizard and copy whatever's under the "SQL" tab.
+GRANT CONNECT ON DATABASE messagesdb TO messagesdb_user;
+
+GRANT INSERT, SELECT, DELETE ON TABLE public.messages TO messagesdb_user;
+-- need this sequence thing for graphql as well
+-- https://stackoverflow.com/a/9325195
+GRANT USAGE, SELECT ON SEQUENCE messages_id_seq TO messagesdb_user;
+
+
