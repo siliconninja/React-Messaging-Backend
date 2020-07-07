@@ -5,7 +5,7 @@
   "main": "app/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "postgraphile --cors --append-plugins @graphile-contrib/pg-simplify-inflector"
+    "start": "postgraphile --append-plugins @graphile-contrib/pg-simplify-inflector `pwd`/SubscriptionPlugin.js --subscriptions --cors"
   },
   "repository": {
     "type": "git",
@@ -19,12 +19,13 @@
   "homepage": "https://github.com/siliconninja/React-Messaging-Backend#readme",
   "dependencies": {
     "@graphile-contrib/pg-simplify-inflector": "^6.0.0",
+    "@graphile/pg-pubsub": "^4.7.0",
     "postgraphile": "^4.7.0"
   },
   "comments": {
     "main": "THE ABOVE main app/index.js ^ JS FILE IS UNUSED - RUN npm start TO RUN THE APP INSTEAD.",
     "scripts": {
-      "start": "Need --cors (for now) to fix https://github.com/graphile/postgraphile/issues/84#issuecomment-285551029. MUST SPECIFY that you want the pg-simplify-inflector plugin: https://github.com/graphile/pg-simplify-inflector#usage. Also you can specify the username and password for the connection string in .postgraphilerc.js (to better separate configs) - SEE https://www.graphile.org/postgraphile/usage-cli/#rc-file-options"
+      "start": "Sadly we can't add new lines to this monstrous one-line script, but causes problems if we do, so we just gotta live with it. (https://stackoverflow.com/a/36259070) (At least PostGraphile is configurable that way.) Subscriptions, ENHANCE! Need --cors (for now) to fix https://github.com/graphile/postgraphile/issues/84#issuecomment-285551029. MUST SPECIFY that you want the pg-simplify-inflector plugin: https://github.com/graphile/pg-simplify-inflector#usage. Also you can specify the username and password for the connection string in .postgraphilerc.js (to better separate configs) - SEE https://www.graphile.org/postgraphile/usage-cli/#rc-file-options"
     }
   }
 }
