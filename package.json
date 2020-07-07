@@ -5,7 +5,7 @@
   "main": "app/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "postgraphile --append-plugins @graphile-contrib/pg-simplify-inflector `pwd`/SubscriptionPlugin.js --subscriptions --cors"
+    "start": "postgraphile --append-plugins @graphile-contrib/pg-simplify-inflector --plugins @graphile/pg-pubsub --subscriptions --simple-subscriptions --cors"
   },
   "repository": {
     "type": "git",
