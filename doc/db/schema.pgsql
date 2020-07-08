@@ -36,4 +36,21 @@ GRANT INSERT, SELECT, DELETE ON TABLE public.messages TO messagesdb_user;
 -- https://stackoverflow.com/a/9325195
 GRANT USAGE, SELECT ON SEQUENCE messages_id_seq TO messagesdb_user;
 
+# ================= EXAMPLE QUERIES FOR SUBSCRIPTIONS ======================
+# example test DB queries (to practice triggering subscriptions)
+select pg_notify(
+  'postgraphile:onNewMessage',
+  '{}'
+);
 
+# gets useful information as well as know that we got a new message
+select pg_notify(
+  'postgraphile:onNewMessage',
+  json_build_object(
+    '__node__', json_build_array(
+      'messages', -- IMPORTANT: this is not always exactly the table name; base64
+              -- decode an existing nodeId to see what it should be.
+      6      -- The primary key (for multiple keys, list them all).
+    )
+  )::text
+);
