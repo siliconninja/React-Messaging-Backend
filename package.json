@@ -5,7 +5,7 @@
   "main": "app/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "postgraphile --plugins @graphile/pg-pubsub --append-plugins @graphile-contrib/pg-simplify-inflector --subscriptions --simple-subscriptions --cors"
+    "start": "postgraphile --append-plugins @graphile-contrib/pg-simplify-inflector --append-plugins @graphile/subscriptions-lds --live --cors"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   "dependencies": {
     "@graphile-contrib/pg-simplify-inflector": "^6.0.0",
     "@graphile/pg-pubsub": "^4.7.0",
+    "@graphile/subscriptions-lds": "^4.7.0",
     "postgraphile": "^4.7.0"
   },
   "comments": {
