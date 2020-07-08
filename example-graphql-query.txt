@@ -69,3 +69,21 @@ mutation {
     }
   }
 }
+
+# listen for added messages and print them to the screen. (NOTE! The ACTUAL topic name is postgraphile:onNewMessage because you could write a custom plugin
+# to have another topic without postgraphile: in it. This is to avoid confusion.)
+# you can run this within GraphiQL then actually trigger it by using the pg_notify PostgreSQL stored procedure (like sp_help sort of).
+# https://www.graphile.org/postgraphile/subscriptions/#topic-prefix
+subscription {
+  listen(topic: "onNewMessage") {
+    relatedNodeId
+    relatedNode {
+      nodeId
+      ... on Message {
+        id
+        email
+        message
+      }
+    }
+  }
+}
