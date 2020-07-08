@@ -47,13 +47,18 @@
 mutation {
   createMessage(
     input: {
-      message: {
-        email: "theninja@thesilicon.ninja"
-        message: "GraphQL is fun"
-      }
+      message: { email: "theninja@thesilicon.ninja", message: "GraphQL is fun2" }
     }
-  )
-  # get the rest of the stuff and print it to the screen!
+  ) {
+    message {
+      id
+      email
+      message
+    }
+  }
+}
+
+# get all messages and print them to the screen!
 {
   messages {
     nodes {

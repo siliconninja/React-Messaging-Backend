@@ -5,7 +5,7 @@
   "main": "app/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "postgraphile --plugins @graphile/pg-pubsub --append-plugins @graphile-contrib/pg-simplify-inflector --append-plugins \"/users/siliconninja/Documents/React apps/Messaging app 2/React-Messaging-Backend/AddMessageSubscriptionPlugin.js\" --subscriptions --cors"
+    "start": "postgraphile --plugins @graphile/pg-pubsub --append-plugins @graphile-contrib/pg-simplify-inflector --subscriptions --simple-subscriptions --cors"
   },
   "repository": {
     "type": "git",
