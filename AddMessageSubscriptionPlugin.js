@@ -1,17 +1,18 @@
 // MySubscriptionPlugin.js
-const currentUserTopicFromContext = (_args, context, _resolveInfo) => {
-    if (context.jwtClaims.user_id) {
-      return `graphql:user:${context.jwtClaims.user_id}`;
-    } else {
-      throw new Error("You're not logged in");
-    }
-  };
+// https://www.graphile.org/postgraphile/make-extend-schema-plugin/
+const { makeExtendSchemaPlugin, gql, embed } = require("graphile-utils");
+
+// INFO this is a hacky way to do it, we can assume we will pass in email and message to the arguments.
+// but we need ID from the DB...
+const newMessageFromContext = (args, _context, _resolveInfo) => {
+      return `graphql:message:${context.info.id}`;
+};
   
-  module.exports = makeExtendSchemaPlugin(({ pgSql: sql }) => ({
+module.exports = makeExtendSchemaPlugin(({ pgSql: sql }) => ({
     typeDefs: gql`
-      type UserSubscriptionPayload {
+      type MessageSubscriptionPayload {
         # This is populated by our resolver below
-        user: User
+        message: Message
   
         # This is returned directly from the PostgreSQL subscription payload (JSON object)
         event: String
@@ -19,13 +20,11 @@ const currentUserTopicFromContext = (_args, context, _resolveInfo) => {
   
       extend type Subscription {
         """
-        Triggered when the current user's data changes:
-  
-        - direct modifications to the user
-        - when their organization membership changes
+        Triggered when the message is added, we still get the information from the graphql query and convert
+        it to a URN for the database to use (after the trigger is called).
         """
-        currentUserUpdated: UserSubscriptionPayload @pgSubscription(topic: ${embed(
-          currentUserTopicFromContext
+        messageAdded: MessageSubscriptionPayload @pgSubscription(topic: ${embed(
+            newMessageFromContext
         )})
       }
     `,
@@ -56,4 +55,4 @@ const currentUserTopicFromContext = (_args, context, _resolveInfo) => {
         },
       },
     },
-  }));
+}));
